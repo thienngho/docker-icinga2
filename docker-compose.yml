@@ -1,0 +1,37 @@
+mysql:
+  image: mysql
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+  volumes:
+    - /var/log/icinga2/mysql:/var/log/mysql
+  restart: always
+
+icinga2:
+  image: thienho/icinga2
+  ports:
+    - "80:80"
+  links:
+      - mysql:mysql
+  volumes:
+      - ./sample/icinga2:/icinga2
+      - /var/log/icinga2/apache2:/var/log/apache2
+  environment:
+    - ROOT_PASS=root
+    - IDO_DB_HOSTNAME=
+    - IDO_DB_DATABASE=icinga2_core
+    - IDO_DB_USERNAME=root
+    - IDO_DB_PASSWORD=root
+    - ICINGAWEB2_DB_HOSTNAME=
+    - ICINGAWEB2_DB_DATABASE=icinga2_web
+    - ICINGAWEB2_DB_USERNAME=root
+    - ICINGAWEB2_DB_PASSWORD=root
+    - ICINGA_ADMIN_USER=icingaadmin
+    - ICINGA_ADMIN_PASSWORD=test
+  restart: always
+  command: >
+     /bin/bash -c "
+        while ! mysql -h ${MYSQL_PORT_3306_TCP_ADDR} -u root -proot; do sleep 10; done;
+        /opt/run
+     "
