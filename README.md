@@ -6,3 +6,6 @@ Implement icinga2 in docker container with seperate mysql container
 `docker-compose up -d`
 ## Check container status
 `docker-compose ps`
+## Login:
+- username: icingaadmin
+- password: test
