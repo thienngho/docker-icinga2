@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Base system setup
 RUN apt-get -qq update \
     && apt-get -yqq upgrade \
-    && apt-get -yqq install apt-utils curl wget less python-pip supervisor \
+    && apt-get -yqq install apt-utils curl wget less python-pip supervisor cron logrotate \
     && pip install supervisor-stdout
 
 ADD base/locale /etc/default/locale
