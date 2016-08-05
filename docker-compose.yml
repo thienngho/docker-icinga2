@@ -30,8 +30,3 @@ icinga2:
     - ICINGA_ADMIN_USER=icingaadmin
     - ICINGA_ADMIN_PASSWORD=test
   restart: always
-  command: >
-     /bin/bash -c "
-        while ! mysql -h ${MYSQL_PORT_3306_TCP_ADDR} -u root -proot; do sleep 10; done;
-        /opt/run
-     "
