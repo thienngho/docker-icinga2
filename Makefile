@@ -1,2 +1,2 @@
 icinga2:
-	docker build -t thienho/icinga2 --rm .
+	docker build -t thienngho/icinga2 --rm .

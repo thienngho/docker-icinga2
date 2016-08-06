@@ -9,7 +9,7 @@ mysql:
   restart: always
 
 icinga2:
-  image: thienho/icinga2
+  image: thienngho/icinga2
   ports:
     - "80:80"
   links:
