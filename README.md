@@ -1,5 +1,5 @@
 # docker-icinga2
-Implement icinga2 in docker container with seperate mysql container
+Implement icinga2 in docker container with separate mysql container
 ## To build image
 `make icinga2`
 ## To run container
