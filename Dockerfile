@@ -38,6 +38,7 @@ RUN mkdir -p /etc/icingaweb2/enabledModules \
     && rm -rf /tmp/icingaweb2.zip /tmp/icingaweb2
 
 EXPOSE 80
+CMD ["/usr/sbin/cron"]
 
 VOLUME  ["/icinga2", "/icingaweb2"]
 
