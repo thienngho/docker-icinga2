@@ -8,9 +8,9 @@ RUN apt-get -qq update \
     && apt-get -yqq install apt-utils curl wget less python-pip supervisor cron logrotate \
     && pip install supervisor-stdout
 
-ADD base/locale /etc/default/locale
-ADD base/supervisord.conf /etc/supervisor/supervisord.conf
-ADD base/sv_stdout.conf /etc/supervisor/conf.d/
+COPY base/locale /etc/default/locale
+COPY base/supervisord.conf /etc/supervisor/supervisord.conf
+COPY base/sv_stdout.conf /etc/supervisor/conf.d/
 
 # Container setup
 RUN apt-get -qqy remove dbconfig-common \
@@ -22,7 +22,7 @@ RUN apt-get -qq update \
     && apt-get -qqy install --no-install-recommends libjs-jquery-ui/wheezy-backports \
     && apt-get -qqy install --no-install-recommends icinga2 icinga2-ido-mysql nagios-plugins icingaweb2 nagios-nrpe-plugin
 
-ADD content/ /
+COPY content/ /
 
 RUN mkdir /icinga2 \
     && mkdir /icingaweb2
